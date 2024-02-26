@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { SafeAreaView, Text, StyleSheet } from "react-native";
+import { ClerkProvider } from "@clerk/clerk-expo";
+import Constants from "expo-constants";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ClerkProvider
+      publishableKey={Constants.expoConfig.extra.clerkPublishableKey}
+    >
+      <SafeAreaView style={styles.container}>
+        <Text>Hello world!</Text>
+      </SafeAreaView>
+    </ClerkProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
